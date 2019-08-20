@@ -58,10 +58,11 @@ if __name__ == "__main__":
     for i in range(10000):
         round, all_scrolls = finish_one()
         # print("Round",round)
-        print("{}:".format(i), "{:,}".format(all_scrolls*95) ,"Baht")
+        print("{}:".format(i), "{:,}".format(all_scrolls*90) ,"Baht", 
+            "Re-scroll:",round - 1, "Scroll:", abs(round-1-all_scrolls))
         if all_scrolls < min_e:
             min_e = all_scrolls
         if  all_scrolls > max_e:
             max_e = all_scrolls
-    print("*Min-Max price","{:,}".format(min_e*95),"--------- {:,}".format(max_e*95))
+    print("*Min-Max price","{:,}".format(min_e*90),"--------- {:,}".format(max_e*90))
     print("option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))   

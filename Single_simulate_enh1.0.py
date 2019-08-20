@@ -5,7 +5,7 @@ def do_enhance(percent):
     if pick <= percent:
         return "S -->{:.2f}:::{}%".format(pick, percent)
     else:
-        return "E -->{:.2f}:::{:.0f}%".format(pick, percent)
+        return "F -->{:.2f}:::{:.0f}%".format(pick, percent)
 def loop_enhance(percent, round):
     score = 0
     flag = 'S'
@@ -13,40 +13,40 @@ def loop_enhance(percent, round):
         status = do_enhance(percent)
         print(status)
         score += 1
-        if status[0] == 'E':
-            flag = 'E'
+        if status[0] == 'F':
+            flag = 'F'
             score+=1
             return flag, score
     return flag, score
 if __name__ == "__main__":
     # target_enh = int(input("Target:"))
-    all_status = 'E'
+    all_status = 'F'
     round = 0
     score = 0
     all_score = 0
-    enh_1 = 1
-    enh_2 = 0
-    enh_3 = 4 
-    enh_4 = 6
+    enh_1 = 0
+    enh_2 = 1
+    enh_3 = 3 
+    enh_4 = 8
 
-    while all_status == 'E':
+    while all_status == 'F':
         round += 1
         print('='*30)
         status,score = loop_enhance(24.2,enh_1)
         all_score += score
-        if status == 'E':
+        if status == 'F':
             continue
         status,score = loop_enhance(48.4,enh_2)
         all_score += score
-        if status == 'E':
+        if status == 'F':
             continue
         status,score = loop_enhance(72.6,enh_3)
         all_score += score
-        if status == 'E':
+        if status == 'F':
             continue        
         status,score = loop_enhance(96.8,enh_4)
         all_score += score
-        if status == 'E':
+        if status == 'F':
             continue        
         
         all_status = 'S'

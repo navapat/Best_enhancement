@@ -48,21 +48,33 @@ if __name__ == "__main__":
     """
         main input 
     """
-    enh_1 = 1
-    enh_2 = 0
-    enh_3 = 2
-    enh_4 = 9
-
+    limit = 10000
+    re_price = 85
+    enh_price = 90
+    enh_1 = 0
+    enh_2 = 1
+    enh_3 = 3
+    enh_4 = 8
+    budget = 3000
+    
 
     max_e = -1
     min_e = 99999
-    for i in range(10000):
+    count_save = 0
+    for i in range(limit):
         round, all_scrolls = finish_one()
-        print("{}:".format(i), "{:,}".format(all_scrolls*90) ,"Baht", 
-            "Re-scroll:",round - 1, "Scroll:", abs(round-1-all_scrolls))
-        if all_scrolls < min_e:
-            min_e = all_scrolls
-        if  all_scrolls > max_e:
-            max_e = all_scrolls
-    print("*Min-Max price","{:,}".format(min_e*90),"--------- {:,}".format(max_e*90))
-    print("option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))   
+        re_scroll = round - 1
+        enh_scroll = abs(round-1-all_scrolls)
+        net_price = re_scroll*re_price + enh_scroll*enh_price
+        # print("{}:".format(i), "{:,}".format(net_price) , "Baht", 
+        #     "Re-scroll:", re_scroll, "Scroll:", enh_scroll)
+        if net_price < min_e:
+            min_e = net_price
+        if  net_price > max_e:
+            max_e = net_price
+        if net_price <= budget:
+            count_save += 1
+    print("*Min-Max price: ","{:,}".format(min_e),"---- {:,}".format(max_e))
+    print("Not over budget {:,} Baht :{:.3f}%".format(budget, count_save/limit*100))
+    print("Option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)) +
+          " for {} slots".format(enh_1+enh_2+enh_3+enh_4))

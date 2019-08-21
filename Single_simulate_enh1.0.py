@@ -20,10 +20,10 @@ def loop_enhance(percent, round):
 if __name__ == "__main__":
     # target_enh = int(input("Target:"))
 
-    enh_1 = 1
-    enh_2 = 0
-    enh_3 = 2 
-    enh_4 = 9
+    enh_1 = 0
+    enh_2 = 1
+    enh_3 = 3 
+    enh_4 = 8
 
     all_status = 'F'
     round = 0

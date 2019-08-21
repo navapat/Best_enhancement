@@ -1,11 +1,10 @@
 import random as rd
 def do_enhance(percent):
-    pick = rd.random()*1000
-    percent *= 10
+    pick = rd.random()*100
     if pick <= percent:
-        return "S -->{:.2f}:::{}%".format(pick, percent)
+        return "S -->{:.2f}:::{:.2f}%".format(pick, percent)
     else:
-        return "F -->{:.2f}:::{:.0f}%".format(pick, percent)
+        return "F -->{:.2f}:::{:.2f}%".format(pick, percent)
 def loop_enhance(percent, round):
     scrolls = 0
     flag = 'S'
@@ -46,18 +45,19 @@ def finish_one():
     return round, all_scrolls
 
 if __name__ == "__main__":
-    # target_enh = int(input("Target:"))
-    enh_1 = 0
-    enh_2 = 1
-    enh_3 = 3
-    enh_4 = 8
+    """
+        main input 
+    """
+    enh_1 = 1
+    enh_2 = 0
+    enh_3 = 2
+    enh_4 = 9
 
 
     max_e = -1
     min_e = 99999
     for i in range(10000):
         round, all_scrolls = finish_one()
-        # print("Round",round)
         print("{}:".format(i), "{:,}".format(all_scrolls*90) ,"Baht", 
             "Re-scroll:",round - 1, "Scroll:", abs(round-1-all_scrolls))
         if all_scrolls < min_e:

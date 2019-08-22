@@ -23,7 +23,7 @@ if __name__ == "__main__":
     enh_1 = 0
     enh_2 = 1
     enh_3 = 3 
-    enh_4 = 8
+    enh_4 = 6
 
     all_status = 'F'
     round = 0

@@ -55,12 +55,18 @@ if __name__ == "__main__":
     enh_2 = 1
     enh_3 = 3
     enh_4 = 8
-    budget = 3000
+    budget = 3500
     
 
     max_e = -1
     min_e = 99999
     count_save = 0
+    re_budget = 0
+    enh_budget = 0
+    max_re_1 = -999
+    max_re_2 = -999
+    max_re_3 = -999
+    max_netprice = -99999
     for i in range(limit):
         round, all_scrolls = finish_one()
         re_scroll = round - 1
@@ -74,7 +80,18 @@ if __name__ == "__main__":
             max_e = net_price
         if net_price <= budget:
             count_save += 1
-    print("*Min-Max price: ","{:,}".format(min_e),"---- {:,}".format(max_e))
-    print("Not over budget {:,} Baht :{:.3f}%".format(budget, count_save/limit*100))
-    print("Option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)) +
-          " for {} slots".format(enh_1+enh_2+enh_3+enh_4))
+            if net_price > max_netprice:
+                max_netprice = net_price
+                re_budget = re_scroll
+                enh_budget = enh_scroll
+            if re_scroll > max_re_1:
+                max_re_1 = re_scroll
+                max_re_2 = enh_scroll
+                max_re_3 = net_price
+    print('',"Simulation summary for {:,} rounds".format(limit), sep = '\n')
+    print("*All Min-Max price: ","{:,}".format(min_e),"<----> {:,}".format(max_e))
+    print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
+    print("Max price     --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(re_budget, enh_budget, max_netprice))
+    print("Max re-scroll --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(max_re_1, max_re_2, max_re_3))
+    print("Option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))
+    print("Weapon Slot: {}".format(enh_1+enh_2+enh_3+enh_4))

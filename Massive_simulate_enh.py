@@ -2,9 +2,9 @@ import random as rd
 def do_enhance(percent):
     pick = rd.random()*100
     if pick <= percent:
-        return "S -->{:.2f}:::{:.2f}%".format(pick, percent)
+        return "S"
     else:
-        return "F -->{:.2f}:::{:.2f}%".format(pick, percent)
+        return "F"
 def loop_enhance(percent, round):
     scrolls = 0
     flag = 'S'

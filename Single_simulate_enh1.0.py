@@ -2,9 +2,9 @@ import random as rd
 def do_enhance(percent):
     pick = rd.random()*100
     if pick <= percent:
-        return "S -->{:.2f}:::{:.2f}%".format(pick, percent)
+        return "S -->{:6.2f}:--:{:.2f}%".format(pick, percent)
     else:
-        return "F -->{:.2f}:::{:.2f}%".format(pick, percent)
+        return "F -->{:6.2f}:--:{:.2f}%".format(pick, percent)
 def loop_enhance(percent, round):
     score = 0
     flag = 'S'
@@ -20,15 +20,19 @@ def loop_enhance(percent, round):
 if __name__ == "__main__":
     # target_enh = int(input("Target:"))
 
+    re_price = 85
+    enh_price = 90
     enh_1 = 0
     enh_2 = 1
     enh_3 = 3 
-    enh_4 = 6
+    enh_4 = 8
 
     all_status = 'F'
     round = 0
     score = 0
     all_score = 0
+    re_scroll = 0
+    enh_scroll = 0
     while all_status == 'F':
         round += 1
         print('='*30)
@@ -50,7 +54,9 @@ if __name__ == "__main__":
             continue        
         
         all_status = 'S'
+    re_scroll = round - 1
+    enh_scroll = all_score - re_scroll
     print('='*30)
     print("Round: "+ str(round))
-    print("Baht: "+ str((all_score)*90))
+    print("Cost: {:,} BAHT  Re-scrolls:{}  Enh-scrolls:{}".format( re_scroll* re_price + enh_scroll * enh_price, re_scroll, enh_scroll))
     print("option: "+str((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))                

@@ -66,14 +66,14 @@ if __name__ == "__main__":
     limit = 10000
     re_price = 90
     enh_price = 95
-    enh_1 = 1
-    enh_2 = 0
+    enh_1 = 0
+    enh_2 = 1
     enh_3 = 3
-    enh_4 = 7
-    budget = 5000
+    enh_4 = 8
+    budget = 3500
     
     """
-        main fix variable
+        Global variables
     """
     enh_1_rate = 24.2 
     enh_2_rate = 48.4
@@ -92,10 +92,11 @@ if __name__ == "__main__":
     """
         Start process
     """
+    progress_one_percent = 0.01 * limit
     for i in range(limit):
-        if (i % (limit/100)) == 0:
+        if i % progress_one_percent == 0:
             os.system('cls')
-            print('Progress: {}{:.0f}%'.format('.'*int(i/1000),i/100))
+            print('Progress: {}{:.0f}%'.format('.'*int(i/progress_one_percent/10),i/progress_one_percent))
             
         round, all_scrolls = finish_one()
         re_scroll = round - 1
@@ -122,12 +123,12 @@ if __name__ == "__main__":
         Display summary
     """
     print('',"Simulation summary for {:,} rounds".format(limit), sep = '\n')
-    print("*All Min-Max cost: ","{:,}".format(min_e),"<----> {:,}".format(max_e))
-    print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
+    print("All Min-Max cost: ","{:,}".format(min_e),"<----> {:,}".format(max_e))
     print("Max cost      --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(re_budget, enh_budget, max_netprice))
     print("Max re-scroll --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(max_re_1, max_re_2, max_re_3))
     print("Option: {:+d}".format((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))
     print("Weapon Slot: {}".format(enh_1+enh_2+enh_3+enh_4))
+    print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
     """
         Display cost range
     """

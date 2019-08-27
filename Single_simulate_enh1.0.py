@@ -20,8 +20,8 @@ def loop_enhance(percent, round):
 if __name__ == "__main__":
     # target_enh = int(input("Target:"))
 
-    re_price = 85
-    enh_price = 90
+    re_price = 95
+    enh_price = 95
     enh_1 = 0
     enh_2 = 1
     enh_3 = 3 

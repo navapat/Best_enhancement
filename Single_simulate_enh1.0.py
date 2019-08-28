@@ -22,10 +22,10 @@ if __name__ == "__main__":
 
     re_price = 95
     enh_price = 95
-    enh_1 = 0
-    enh_2 = 1
-    enh_3 = 3 
-    enh_4 = 8
+    enh_1 = 2
+    enh_2 = 0
+    enh_3 = 0 
+    enh_4 = 0
 
     all_status = 'F'
     round = 0

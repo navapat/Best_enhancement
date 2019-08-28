@@ -1,5 +1,6 @@
 import random as rd
 import os
+import subprocess as sp
 def do_enhance(percent):
     pick = rd.random()*100
     if pick <= percent:
@@ -41,7 +42,12 @@ def finish_one():
         all_scrolls += scrolls
         if status == 'F':
             continue        
-        
+
+        status,scrolls = loop_enhance(enh_rate_spacial,special_enh)
+        all_scrolls += scrolls
+        if status == 'F':
+            continue         
+
         all_status = 'S'
     return round, all_scrolls
 
@@ -69,8 +75,10 @@ if __name__ == "__main__":
     enh_1 = 0
     enh_2 = 1
     enh_3 = 3
-    enh_4 = 8
-    budget = 3500
+    enh_4 = 0
+    special_enh = 0
+    enh_rate_spacial = 25
+    budget = 400
     
     """
         Global variables
@@ -96,6 +104,7 @@ if __name__ == "__main__":
     for i in range(limit):
         if i % progress_one_percent == 0:
             os.system('cls')
+            # sp.call('clear',shell=True) #linux OS
             print('Progress: {}{:.0f}%'.format('.'*int(i/progress_one_percent/10),i/progress_one_percent))
             
         round, all_scrolls = finish_one()
@@ -123,12 +132,12 @@ if __name__ == "__main__":
         Display summary
     """
     print('',"Simulation summary for {:,} rounds".format(limit), sep = '\n')
+    print("Weapon Slot: {}".format(enh_1+enh_2+enh_3+enh_4))
+    print("Option: {:+d}".format((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))
     print("All Min-Max cost: ","{:,}".format(min_e),"<----> {:,}".format(max_e))
+    print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
     print("Max cost      --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(re_budget, enh_budget, max_netprice))
     print("Max re-scroll --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(max_re_1, max_re_2, max_re_3))
-    print("Option: {:+d}".format((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))
-    print("Weapon Slot: {}".format(enh_1+enh_2+enh_3+enh_4))
-    print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
     """
         Display cost range
     """

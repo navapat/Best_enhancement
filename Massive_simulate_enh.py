@@ -64,7 +64,15 @@ def do_cost_collection(cost):
         cost_range['5000b'] += 1
     else:
         cost_range['5001b+'] += 1
-        
+
+def get_int_input(var, text):
+    try:
+        var = int(input(text))
+    except:
+        print('โปรใส่ตัวเลขจำนวนเต็ม')
+        get_int_input(var, text)        
+    return
+
 if __name__ == "__main__":
     """
         main input 
@@ -73,20 +81,20 @@ if __name__ == "__main__":
     re_price = 90
     enh_price = 95
     enh_1 = 0
-    enh_2 = 1
-    enh_3 = 3
+    enh_2 = 3
+    enh_3 = 0
     enh_4 = 0
     special_enh = 0
     enh_rate_spacial = 25
-    budget = 400
+    budget = 1000
     
     """
         Global variables
     """
-    enh_1_rate = 24.2 
-    enh_2_rate = 48.4
-    enh_3_rate = 72.6
-    enh_4_rate = 96.8
+    enh_1_rate = 11 * 2.2 #24.2
+    enh_2_rate = 22 * 2.2 #48.4
+    enh_3_rate = 33 * 2.2 #72.6
+    enh_4_rate = 44 * 2.2 #96.8
     max_e = -1
     min_e = 99999
     count_save = 0
@@ -104,7 +112,7 @@ if __name__ == "__main__":
     for i in range(limit):
         if i % progress_one_percent == 0:
             os.system('cls')
-            # sp.call('clear',shell=True) #linux OS
+            #sp.call('clear',shell=True) #linux OS
             print('Progress: {}{:.0f}%'.format('.'*int(i/progress_one_percent/10),i/progress_one_percent))
             
         round, all_scrolls = finish_one()
@@ -132,12 +140,13 @@ if __name__ == "__main__":
         Display summary
     """
     print('',"Simulation summary for {:,} rounds".format(limit), sep = '\n')
+    print("ผนึกระดับ 1: {:^5} \nผนึกระดับ 2: {:^5}\nผนึกระดับ 3: {:^5}\nผนึกระดับ 4: {:^5}".format(enh_1,enh_2,enh_3,enh_4))
     print("Weapon Slot: {}".format(enh_1+enh_2+enh_3+enh_4))
     print("Option: {:+d}".format((enh_1*20)+(enh_2*15)+(enh_3*12)+(enh_4*9)))
     print("All Min-Max cost: ","{:,}".format(min_e),"<----> {:,}".format(max_e))
     print("Not over budget {:,} BAHT: {:.3f}%".format(budget, count_save/limit*100))
-    print("Max cost      --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(re_budget, enh_budget, max_netprice))
-    print("Max re-scroll --> Re-scrolls: {}, Enhancement scrolls: {}, Price: {:,} BAHT".format(max_re_1, max_re_2, max_re_3))
+    print("Max cost      --> Re-scrolls: {:>4}, Enhancement scrolls: {:>4}, Price: {:,} BAHT".format(re_budget, enh_budget, max_netprice))
+    print("Max re-scroll --> Re-scrolls: {:>4}, Enhancement scrolls: {:>4}, Price: {:,} BAHT".format(max_re_1, max_re_2, max_re_3))
     """
         Display cost range
     """

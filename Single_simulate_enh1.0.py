@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     re_price = 95
     enh_price = 95
-    enh_1 = 2
+    enh_1 = 12
     enh_2 = 0
     enh_3 = 0 
     enh_4 = 0

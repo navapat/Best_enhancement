@@ -83,23 +83,10 @@ if __name__ == "__main__":
     enh_1 = 0
     enh_2 = 3
     enh_3 = 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-    enh_4 = 11
-    special_enh = 0
-    enh_rate_spacial = 25
-    budget = 1400
-=======
-=======
->>>>>>> e257cee482d09d7d958ed103ad1b4b6b5bf0aa76
     enh_4 = 0
     special_enh = 0
     enh_rate_spacial = 25
     budget = 1000
-<<<<<<< HEAD
->>>>>>> e257cee482d09d7d958ed103ad1b4b6b5bf0aa76
-=======
->>>>>>> e257cee482d09d7d958ed103ad1b4b6b5bf0aa76
     
     """
         Global variables
